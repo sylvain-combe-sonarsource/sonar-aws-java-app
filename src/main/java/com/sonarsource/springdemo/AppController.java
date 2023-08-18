@@ -9,9 +9,17 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class AppController {
 
+	@Autowired
+    DataUtils du;
+
 	@RequestMapping("/")
 	public @ResponseBody String greeting() {
 		return "Hello, World";
 	}
+
+	@RequestMapping("/person/address")
+    public @ResponseBody String getAddress(@RequestParam String name) {
+        return du.getAddress(name);
+    }
 
 }
